@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: Hola muchachos
+title: Nada muchachos de demoira
 date: 2020-06-22T20:57:09.668Z
 description: Probando el github desde mi pc
 featuredpost: true
