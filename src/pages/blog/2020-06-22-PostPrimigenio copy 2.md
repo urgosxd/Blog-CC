@@ -1,5 +1,5 @@
 ---
-templateKey: blog-Page
+templateKey: blog-page
 title: EL primer post
 date: 2016-12-17T15:04:10.000Z
 featuredimage: /img/bibleBlog.jpg
