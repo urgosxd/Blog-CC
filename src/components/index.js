@@ -1,4 +1,4 @@
-export * from "./NavBar";
+export * from "./Nav";
 export * from "./Post-reciente";
 export * from "./PreviewCompatibleImage";
 export * from "./SiteMetadata";

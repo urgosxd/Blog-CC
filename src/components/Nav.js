@@ -2,7 +2,7 @@ import { NavWrapper } from "../elements";
 import React from "react";
 import { Link } from "gatsby";
 
-const Navbar = () => (
+export const Nav = () => (
   <NavWrapper>
     <div>
       <h4>BLOG</h4>
@@ -12,5 +12,3 @@ const Navbar = () => (
     </div>
   </NavWrapper>
 );
-
-export default Navbar;

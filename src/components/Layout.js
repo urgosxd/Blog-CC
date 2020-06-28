@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import Navbar from "./NavBar";
+import { Nav } from "../components";
 import { styled } from "twin.macro";
 
 export const Layout = ({ children }) => {
@@ -9,7 +9,7 @@ export const Layout = ({ children }) => {
       <Helmet>
         <html lang="en" />
       </Helmet>
-      <Navbar />
+      <Nav />
       {children}
     </Main>
   );
