@@ -11,6 +11,7 @@ export const BlogTemplate = ({
   typeBiblia,
 }) => {
   const PostContent = contentComponent || ContentBlog;
+
   return (
     <Content>
       <div>
@@ -36,7 +37,7 @@ BlogTemplate.propTypes = {
 
 export const Blog = ({ data }) => {
   const { markdownRemark: post } = data;
-
+  console.log(post.html);
   return (
     <Layout>
       <BlogTemplate
