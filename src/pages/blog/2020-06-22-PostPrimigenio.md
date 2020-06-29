@@ -1,5 +1,5 @@
 ---
-templateKey: blog-page
+templateKey: blog-post
 typebible: true
 title: EL primer post
 date: 2016-12-17T15:04:10.000Z
