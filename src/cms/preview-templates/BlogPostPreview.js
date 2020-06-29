@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { BlogTemplate } from "../../templates/blog-page";
+import { BlogTemplate } from "../../templates/blog-post";
 
 const BlogPostPreview = ({ entry, widgetFor }) => {
   return (
