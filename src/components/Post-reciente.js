@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, graphql, useStaticQuery } from "gatsby";
+import PropTypes from "prop-types";
 import tw, { styled } from "twin.macro";
 
-export const PostReciente = ({ tipo, heading, autor, time }) => {
+export const PostReciente = ({ tipo, title, autor, dateTime, description }) => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       allImageSharp {
@@ -27,14 +28,15 @@ export const PostReciente = ({ tipo, heading, autor, time }) => {
   console.log(IMG1);
 
   return (
-    <Baner tipo="bible" img={IMG1} img2={IMG2}>
-      <h5>Ultima Publicacion</h5> <h3>Time</h3>
+    <Baner tipo={tipo} img={IMG1} img2={IMG2}>
+      <h5>Ultima Publicacion</h5> <h3>{dateTime}</h3>
       <div>
         <div>
           <h2>{tipo}</h2>
-          <h4>{heading}</h4>
+          <h4>{title}</h4>
         </div>
         <div>
+          <p>{description}</p>
           <button></button>
           <h2>{autor}</h2>
         </div>
@@ -43,9 +45,16 @@ export const PostReciente = ({ tipo, heading, autor, time }) => {
   );
 };
 
+PostReciente.propTypes = {
+  tipo: PropTypes.string,
+  title: PropTypes.string,
+  autor: PropTypes.string,
+  dateTime: PropTypes.string,
+};
+
 const Baner = styled.div`
   background: ${(props) =>
-    props.tipo === "bible" ? `url(${props.img})` : `url(${props.img2})`};
+    props.tipo ? `url(${props.img})` : `url(${props.img2})`};
   background-position: center;
   background-repeat: no-repeat;
 `;

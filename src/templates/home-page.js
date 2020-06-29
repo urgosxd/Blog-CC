@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import { PostReciente, Content, Card, Pagination, Layout } from "../components";
-import { set } from "lodash";
 
 export const Home = ({ pageContext, data }) => {
   const posts = data.allMarkdownRemark.edges;
@@ -19,7 +18,12 @@ export const Home = ({ pageContext, data }) => {
 
   return (
     <Layout>
-      <PostReciente />
+      <PostReciente
+        tipo={Thelast.node.frontmatter.typebible}
+        title={Thelast.node.frontmatter.title}
+        dateTime={Thelast.node.frontmatter.date}
+        description={Thelast.node.frontmatter.description}
+      />
       <Content>
         {posts.map((post, i) =>
           i === index ? null : (
@@ -42,6 +46,13 @@ export const Home = ({ pageContext, data }) => {
   );
 };
 
+Home.propTypes = {
+  pageContext: PropTypes.object,
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({ edges: PropTypes.array }),
+  }),
+};
+
 export default Home;
 
 export const pageQuery = graphql`
@@ -60,6 +71,8 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
+            typebible
+            description
             featuredimage {
               childImageSharp {
                 fluid(maxWidth: 200, quality: 100) {

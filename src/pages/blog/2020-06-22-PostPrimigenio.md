@@ -1,9 +1,10 @@
 ---
 templateKey: blog-page
+typebible: true
 title: EL primer post
 date: 2016-12-17T15:04:10.000Z
 featuredimage: /img/bibleBlog.jpg
-introduccion: Soy Josue el creador de este blog
+description: Soy Josue el creador de este blog
 ---
 
 The SCAA updated the wheel to reflect the finer nuances needed to describe flavors more precisely. The new descriptions are more detailed and hence allow cuppers to distinguish between more flavors.
