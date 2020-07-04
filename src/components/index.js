@@ -7,3 +7,4 @@ export * from "./Card";
 export * from "./pagination";
 export * from "./Layout";
 export * from "./ContentBlog";
+export * from "./Leyend";

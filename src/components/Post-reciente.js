@@ -25,8 +25,6 @@ export const PostReciente = ({ tipo, title, autor, dateTime, description }) => {
   const IMG1 = ArrayIMG[0].node.fluid.src;
   const IMG2 = ArrayIMG[1].node.fluid.src;
 
-  console.log(IMG1);
-
   return (
     <Baner tipo={tipo} img={IMG1} img2={IMG2}>
       <h5>Ultima Publicacion</h5> <h3>{dateTime}</h3>

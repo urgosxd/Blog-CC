@@ -1,7 +1,16 @@
 import React from "react";
-import PropTypes from "prop-types";
+import PropTypes, { element } from "prop-types";
 import { Link, graphql } from "gatsby";
-import { Layout, ContentBlog, HTMLContent, Content } from "../components";
+import {
+  Layout,
+  ContentBlog,
+  HTMLContent,
+  Content,
+  Leyenda,
+} from "../components";
+import { text } from "html-to-json-data/definitions";
+import convert from "html-to-json-data";
+import html2 from "html2json";
 
 export const BlogTemplate = ({
   content,
@@ -9,20 +18,48 @@ export const BlogTemplate = ({
   description,
   title,
   typeBiblia,
+  leyenda,
 }) => {
   const PostContent = contentComponent || ContentBlog;
+
+  const JSONSTART = html2.html2json(content);
+
+  const found = JSONSTART.child.filter(
+    (element) =>
+      element.tag === "h1" ||
+      element.tag === "h2" ||
+      element.tag === "h3" ||
+      element.tag === "h4" ||
+      element.tag === "h5" ||
+      element.tag === "h6"
+  );
+
+  JSONSTART.child.map((ele) =>
+    found.includes(ele)
+      ? Object.defineProperties(ele, {
+          attr: {
+            value: { id: ele.child[0].text },
+            writable: true,
+          },
+        })
+      : null
+  );
+
+  const HTMLEND = html2.json2html(JSONSTART);
+
+  console.log(HTMLEND);
 
   return (
     <Content>
       <div>
-        <h3 N="TITLE">{title}</h3>
-        <div N="CARD User"></div>
+        <h3 id="Titulo">{title}</h3>
       </div>
 
-      <div N="Palbras para empezar">{description}</div>
-
-      <div N="LEyenda"></div>
-      <PostContent content={content} />
+      <div id="descrip">{description}</div>
+      <div>
+        <Leyenda leyenda={found} />
+      </div>
+      <PostContent content={HTMLEND} />
     </Content>
   );
 };
@@ -37,15 +74,17 @@ BlogTemplate.propTypes = {
 
 export const Blog = ({ data }) => {
   const { markdownRemark: post } = data;
-  console.log(post.html);
+
   return (
     <Layout>
       <BlogTemplate
+        leyenda={post.html}
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
         title={post.frontmatter.title}
       />
+      {post.html}
     </Layout>
   );
 };
